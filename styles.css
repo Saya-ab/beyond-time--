@@ -1,0 +1,1100 @@
+:root {
+  color-scheme: dark;
+  --black: #000;
+  --white: #fff;
+  --stage-max-width: 1040px;
+  --stage-max-height: 1000px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  overflow: hidden;
+  background: var(--black);
+  color: var(--white);
+  display: grid;
+  place-items: center;
+  font-family:
+    "Microsoft YaHei",
+    "PingFang SC",
+    system-ui,
+    sans-serif;
+
+  
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.settings-button,
+.music-button,
+.music-mode-button,
+.environment-button {
+  position: fixed;
+  top: calc(3vh);
+  z-index: 10;
+  border: 0;
+  padding: 0;
+  color: var(--white);
+  background: transparent;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.settings-button {
+  right: calc(3vw);
+}
+
+.music-button {
+  left: calc(3vw);
+}
+
+.music-mode-button {
+  left: calc(3vw + 60px);
+}
+
+.environment-button {
+  left: calc(3vw + 180px);
+}
+
+
+.settings-button:hover,
+.music-button:hover,
+.music-mode-button:hover,
+.send-button:hover,
+.clear-button:hover,
+.plain-button:hover,
+.close-button:hover,
+.environment-button:hover {
+  text-decoration: underline;
+}
+
+/*.room {
+  position: relative;
+  width: min(100vw, var(--stage-max-width));
+  height: min(100vh, var(--stage-max-height));
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto minmax(300px, 40%);
+  align-items: end;
+  justify-items: center;
+  padding: 28px 22px 24px;
+  
+}*/
+
+.room {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background: transparent; /* 确保不遮挡大背景图 */
+}
+
+/*.sky-lines {
+  position: absolute;
+  inset: 52px 0 43%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+.moon,
+.star {
+  position: absolute;
+  display: block;
+  color: var(--white);
+}
+
+.moon {
+  top: 8%;
+  left: 34px;
+  width: 74px;
+  height: 74px;
+  border: 2px solid var(--white);
+  border-radius: 50%;
+}
+
+.moon::after {
+  content: "";
+  position: absolute;
+  top: -1px;
+  left: 23px;
+  width: 74px;
+  height: 74px;
+  border-radius: 50%;
+  background: var(--black);
+}
+
+.star {
+  width: 34px;
+  height: 34px;
+}
+
+.star::before,
+.star::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  width: 2px;
+  height: 100%;
+  background: var(--white);
+  transform: translateX(-50%);
+}
+
+.star::after {
+  transform: translateX(-50%) rotate(90deg);
+}
+
+.star-a {
+  top: 14%;
+  right: 42px;
+}
+
+.star-b {
+  top: 34%;
+  left: 120px;
+  transform: scale(0.62) rotate(45deg);
+}
+
+.star-c {
+  top: 46%;
+  right: 118px;
+  transform: scale(0.82);
+}
+
+.star-d {
+  top: 10%;
+  left: 290px;
+  transform: scale(0.48) rotate(45deg);
+}
+
+.star-e {
+  top: 24%;
+  left: 210px;
+  transform: scale(0.42);
+}
+
+.star-f {
+  top: 30%;
+  right: 242px;
+  transform: scale(0.36) rotate(45deg);
+}
+
+.star-g {
+  top: 58%;
+  left: 64px;
+  transform: scale(0.52) rotate(45deg);
+}
+
+.star-h {
+  top: 62%;
+  right: 66px;
+  transform: scale(0.44);
+}
+
+.witch-image {
+  position: relative;
+  z-index: 1;
+  grid-row: 1;
+  width: auto;
+  max-width: min(88%, 760px);
+  max-height: min(100%, 620px);
+  object-fit: contain;
+  object-position: center;
+  display: block;
+}*/
+
+.slogan-quote {
+   position: fixed;
+  z-index: 2;
+  bottom: 25px;  
+  left: 50%;
+  transform: translateX(-50%); 
+  width: 760px;
+  margin: 0 0 14px;
+  color: rgba(255, 255, 255, 0.86);
+  text-align: center;
+  pointer-events: none;
+  font-family:
+    Georgia,
+    "Times New Roman",
+    "KaiTi",
+    "STKaiti",
+    serif;
+  text-shadow: 0 0 12px rgba(255, 255, 255, 0.18);
+}
+
+.slogan-quote blockquote {
+  position: relative;
+  margin: 0;
+  padding: 0 34px;
+}
+
+.slogan-quote blockquote::before,
+.slogan-quote blockquote::after {
+  position: absolute;
+  top: -5px;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 30px;
+  line-height: 1;
+}
+
+.slogan-quote blockquote::before {
+  content: "“";
+  left: 60px;
+}
+
+.slogan-quote blockquote::after {
+  content: "”";
+  right: 60px;
+}
+
+.slogan-quote p {
+  margin: 0;
+}
+
+.slogan-en {
+  font-size: 15px;
+  font-style: italic;
+  line-height: 1.45;
+}
+
+.slogan-zh {
+  margin-top: 4px;
+  font-family:
+    "KaiTi",
+    "STKaiti",
+    "LXGW WenKai",
+    "Microsoft YaHei",
+    serif;
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.slogan-quote figcaption {
+  margin-top: 5px;
+  color: rgba(255, 255, 255, 0.48);
+  font-size: 11px;
+  font-style: italic;
+}
+
+.dialogue-box {
+  position: fixed; 
+  
+  /* 1. 核心：设置与屏幕大小成比例的留白 */
+  top: 12vh;         /* 距离顶部：屏幕高度的 4% */
+  
+  left: 3vw;     /* 距离右侧：屏幕宽度的 2.5% */
+  
+  /* 2. 核心尺寸计算 */
+  height: 85vh;     /* 确保高度刚好配合上下留白（100vh - 4vh - 4vh = 92vh） */
+  width: 420px;    /* 你可以根据喜好调窄或调宽聊天框本身 */
+  z-index: 10;      
+
+  /* 3. 视觉优化：既然悬浮起来了，加回全包围的边框与圆角会极具精致感 */
+  background: rgba(0, 0, 0, 0.65); 
+  backdrop-filter: blur(12px);     
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--white);  /* 👈 恢复四周完整的白色细边框 */
+  border-radius: 16px;             /* 👈 为悬浮框加上柔和的圆角 */
+  display: grid;
+  grid-template-rows: minmax(0, 1fr) auto;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.5);   /* 降低基础底色不透明度到 40% */
+  backdrop-filter: blur(7px);       /* 👈 让经过对话框后面的背景产生额外的磨砂模糊 */
+  -webkit-backdrop-filter: blur(4px); /* 兼容苹果浏览器 */
+  opacity: 1;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), opacity 0.4s ease;
+}
+
+.toggle-chat-btn { /* 点击人物对话按钮 */
+  position: fixed;
+  top: 7vh;
+  left: 3vw;      /* 👈 钉在对话框内部的右上方 */
+  z-index: 11;      /* 确保在对话框最表面 */
+  
+  background: transparent;
+  color: var(--white);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%; /* 圆形按钮 */
+  width: 28px;
+  height: 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition: all 0.2s;
+
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.2s; 
+}
+
+
+/* 鼠标悬停在按钮上时的变色反馈 */
+.toggle-chat-btn:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: var(--white);
+}
+
+.writing-indicator {
+  position: fixed;
+  bottom: 58px;
+  left: 25px;
+  z-index: 0;
+  display: none;
+  align-items: center;
+  gap: 10px;
+  width: 73px;
+  height: 50px;
+  pointer-events: none;
+}
+
+.dialogue-box.is-thinking .writing-indicator {
+  display: flex;
+}
+
+.tiny-book {
+  position: relative;
+  width: 36px;
+  height: 22px;
+  border-bottom: 1px solid var(--white);
+  
+}
+
+.book-page {
+  position: absolute;
+  bottom: 0;
+  width: 17px;
+  height: 20px;
+  border: 1px solid var(--white);
+  
+}
+
+.book-page-left {
+  left: 0;
+  transform-origin: right bottom;
+}
+
+.book-page-right {
+  right: 0;
+  transform-origin: left bottom;
+  animation: pageTurn 1.2s steps(2, end) infinite;
+}
+
+.tiny-pen {
+  position: relative;
+  width: 24px;
+  height: 1px;
+  background: var(--white);
+  transform: rotate(-22deg);
+  animation: penWrite 0.9s steps(3, end) infinite;
+}
+
+.tiny-pen::after {
+  content: "";
+  position: absolute;
+  right: -4px;
+  top: -2px;
+  width: 5px;
+  height: 5px;
+  border-right: 1px solid var(--white);
+  border-bottom: 1px solid var(--white);
+  transform: rotate(-45deg);
+}
+
+.messages {
+  min-height: 0;
+  overflow-y: auto;
+  padding: 18px 22px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--white) var(--black);
+}
+
+.coffee-cup {
+  position: fixed;
+  bottom: 5vh;
+  right: 3vw;
+  width: 50px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0);
+  z-index: 2;
+}
+
+.cup-body {
+  position: absolute;
+  left: 10px;
+  bottom: 8px;
+  width: 34px;
+  height: 22px;
+  border: 1px solid var(--white);
+  border-top-width: 2px;
+}
+
+.cup-handle {
+  position: absolute;
+  left: 42px;
+  bottom: 13px;
+  width: 14px;
+  height: 12px;
+  border: 1px solid var(--white);
+  border-left: 0;
+  border-radius: 0 12px 12px 0;
+}
+
+.cup-saucer {
+  position: absolute;
+  left: 4px;
+  bottom: 3px;
+  width: 52px;
+  height: 1px;
+  background: var(--white);
+}
+
+.steam {
+  position: absolute;
+  bottom: 33px;
+  width: 8px;
+  height: 16px;
+  border-left: 1px solid var(--white);
+  border-radius: 50%;
+  animation: steamDrift 2.8s ease-in-out infinite;
+}
+
+.steam-a {
+  left: 16px;
+}
+
+.steam-b {
+  left: 27px;
+  animation-delay: 0.4s;
+}
+
+.steam-c {
+  left: 38px;
+  animation-delay: 0.8s;
+}
+
+@keyframes steamDrift {
+  0%,
+  100% {
+    transform: translateY(2px);
+    opacity: 0.5;
+  }
+
+  50% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+}
+
+@keyframes pageTurn {
+  0%,
+  40% {
+    transform: skewY(0deg) scaleX(1);
+  }
+
+  70%,
+  100% {
+    transform: skewY(-12deg) scaleX(0.35);
+  }
+}
+
+@keyframes penWrite {
+  0%,
+  100% {
+    transform: translateX(0) rotate(-22deg);
+  }
+
+  50% {
+    transform: translateX(6px) rotate(-22deg);
+  }
+}
+
+.message {
+  max-width: 100%;
+  color: var(--white);
+  font-size: 18px;
+  line-height: 1.58;
+}
+
+.message-error {
+  opacity: 0.78;
+}
+
+.message p {
+  margin: 0;
+  white-space: pre-wrap;
+}
+
+.message-witch p {
+  max-width: 100%;
+  font-family:
+    "KaiTi",
+    "STKaiti",
+    "LXGW WenKai",
+    "Microsoft YaHei",
+    serif;
+  font-size: 19px;
+  line-height: 1.62;
+  font-style: normal;
+  white-space: pre-wrap !important;
+  height: auto !important;
+  max-height: none !important;
+  display: block !important;
+}
+
+.message-player p {
+  font-style: normal;
+}
+
+.quick-options {
+  border-top: 1px solid var(--white);
+  padding: 10px 12px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.choice-button {
+  min-height: 38px;
+  border: 1px solid var(--white);
+  padding: 7px 10px;
+  color: var(--white);
+  background: transparent;
+  text-align: left;
+  font-size: 14px;
+  line-height: 1.35;
+  transition:
+    box-shadow 140ms ease,
+    transform 140ms ease;
+}
+
+.choice-button:hover {
+  text-decoration: none;
+  box-shadow:
+    inset 0 0 0 1px var(--white),
+    0 0 12px rgba(255, 255, 255, 0.22);
+  transform: translateY(-1px);
+}
+
+.choice-button:disabled {
+  opacity: 0;
+  cursor: wait;
+}
+
+.composer {
+  border-top: 1px solid var(--white);
+  display: grid;
+  grid-template-columns: 1fr auto auto;
+  align-items: stretch;
+}
+
+.composer textarea {
+  min-height: 48px;
+  max-height: 96px;
+  border: 0;
+  padding: 14px 16px;
+  resize: none;
+  outline: none;
+  color: var(--white);
+  background: transparent;;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.composer textarea::placeholder {
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.send-button,
+.clear-button {
+  border: 0;
+  border-left: 1px solid var(--white);
+  padding: 0 14px;
+  color: var(--white);
+  background: transparent;
+  white-space: nowrap;
+}
+
+.send-button:disabled {
+  opacity: 0.45;
+  cursor: wait;
+}
+
+.settings-drawer {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  justify-content: flex-end;
+  background: rgba(0, 0, 0, 0.78);
+}
+
+.settings-drawer.is-open {
+  display: flex;
+}
+
+.settings-panel {
+  width: min(440px, 100vw);
+  height: 100%;
+  border-left: 1px solid var(--white);
+  padding: 20px;
+  overflow-y: auto;
+  background: var(--black);
+}
+
+.settings-head,
+.settings-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h2 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.settings-form {
+  margin-top: 24px;
+  display: grid;
+  gap: 16px;
+}
+
+label {
+  display: grid;
+  gap: 8px;
+  font-size: 13px;
+}
+
+input,
+.settings-form textarea {
+  width: 100%;
+  border: 1px solid var(--white);
+  border-radius: 0;
+  outline: none;
+  padding: 10px;
+  color: var(--white);
+  background: var(--black);
+}
+
+.settings-form textarea {
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.plain-button,
+.close-button {
+  border: 1px solid var(--white);
+  border-radius: 0;
+  padding: 8px 12px;
+  color: var(--white);
+  background: var(--black);
+}
+
+.secret-prompt-box {
+  width: 100%;
+  min-height: 160px;
+  border: 1px solid var(--white);
+  border-radius: 0;
+  padding: 10px;
+  color: var(--white);
+  background: var(--black);
+  text-align: left;
+  font: inherit;
+}
+
+.secret-prompt-box.is-warning {
+  color: #ff2d2d;
+  font-weight: 700;
+  border-color: #ff2d2d;
+}
+
+.background,
+.foreground,
+.character, 
+.time-layer,
+.raindrop,
+.rain {
+  position: fixed; 
+
+  height: 100vh; 
+  width: 100vw;
+
+  object-fit: cover;
+  object-position: 70% center;  
+}
+
+.background {
+  z-index: -1;  
+  filter: url(#camera-lens);   
+}
+
+.foreground {    
+  z-index: -1;       
+}
+
+.character {   
+  z-index: -1; 
+}
+
+.rain {
+  z-index: -2;
+  opacity: 0;
+  filter: url(#camera-lens); 
+  transition: opacity 0.5s linear;   
+}
+
+.raindrop {
+  z-index: -2;
+  opacity: 0;
+  mix-blend-mode:overlay;
+  filter: url(#camera-lens);  
+  transition: opacity 0.5s linear;   
+}
+
+/* 2. 顶部的点击层（按钮）：变成一张全透明的防弹玻璃，无情地扣在图片正上方 */
+.character-click-layer {
+  position: fixed;
+  /* 核心：用坐标把按钮的长宽、位置，调节得和下面的图片完全重合 */
+  top: min(34vh,50vh - 16vw * 9 / 16);
+  right: min(26vw,30vw - 4vh * 16 / 9);
+  width: max(10vw , 0.1 * 100vh / 9 * 16);
+  height: max(45vh , 0.45 * 100vw / 16 * 9); /* 👈 这里的高度请根据你角色图片的实际高矮进行像素微调 */
+  
+  z-index: 10 !important; 
+  
+  object-fit: cover;
+  object-position: 70% center; 
+
+  /* 彻底隐形 */
+  background: rgba(0, 0, 0, 0);
+  border: none !important;
+  padding: 0;
+  margin: 0;
+  cursor: pointer; /* 确保无条件亮起鼠标小手标识 */
+  outline: none;
+}
+
+.game-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0); /* 半透明黑背景 */
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end; /* 固定在屏幕底部，类似 AVG 游戏 */
+    padding-bottom: 40px;
+    cursor: pointer; /* 鼠标变成手型，提示可点击 */
+}
+/* 对话框主体 */
+.game-dialog-box {
+    width: 80%;
+    max-width: 800px;
+    height: 160px;
+    background: rgba(27, 27, 27, 0.65);
+    border: 1px solid #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    position: fixed;
+    bottom: 5vh;
+    box-shadow: 0 0 15px rgba(0,0,0,0.8);
+    box-sizing: border-box;
+    backdrop-filter: blur(3px);
+}
+/* 名字标签 */
+.game-avatar-name {
+    position: absolute;
+    top: -15px;
+    left: 30px;
+    background: #ffffff;
+    color: #000000;
+    padding: 2px 15px;
+    font-weight: bold;
+    font-size: 14px;
+    border-radius: 4px;
+}
+.game-text {
+    color: #ffffff;
+    font-size: 18px;
+    line-height: 1.6;
+    margin: 0;
+    font-family: 'SimSun', 'Courier New', monospace; /* 使用等宽或古典字体 */
+    word-break: break-all;
+}/* 底部提示小箭头 */
+.game-arrow {
+    position: absolute;
+    bottom: 10px;
+    right: 20px;
+    color: #aaaaaa;
+    font-size: 12px;
+    animation: blink 2s infinite; /* 闪烁动画 */
+}
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+}
+
+.cover_down,
+.cover_up {
+  position: fixed; 
+  right: 0;
+  width: 100vw;    
+  height:min(15vh,12vw - 7vh);  
+  background-color: black;   
+  z-index: 1;        
+}
+.cover_down {
+  bottom: 0;
+}
+.cover_up {
+  top: 0;
+}
+
+/* 1. 所有图层的通用底座：全屏铺满死死固定在最底层 */
+.time-layer {
+  z-index: -3;              /* 绝对垫底 */
+  filter: url(#camera-lens); 
+  background-size: cover;
+  background-position: 70% center;
+  /* 🛠️ 核心：加入透明度渐变动画，这样当时间变化时，图片融合切换会非常轻柔 */
+  transition: opacity 1s linear; 
+  transition: background-image 0.8s ease-in-out;
+  opacity: 0;
+}
+
+/* 2. 为每个盒子精准塞入对应的风景图片 */
+.layer-dawn   { background-image: url('dawn_back.png'); }
+.layer-noon { background-image: url('noon_back.png'); }
+.layer-dusk   { background-image: url('dusk_back.png'); }
+.layer-night     { background-image: url('night_back.png');} /* 夜晚在最底层作为兜底背景，默认可见 */
+.layer-dawn-env   { background-image: url('dawn_env.png'); z-index: -1; mix-blend-mode: hard-light;}
+.layer-noon-env { background-image: url('noon_env.png'); z-index: -1; mix-blend-mode: hard-light;}
+.layer-dusk-env   { background-image: url('dusk_env.png'); z-index: -1; mix-blend-mode: hard-light;}
+.layer-night-env     { background-image: url('night_env.png'); z-index: -1; mix-blend-mode: hard-light;}
+
+.modal-overlay {
+  display: none;             /* 默认隐藏 */
+  position: fixed;           /* 固定定位，相对于浏览器窗口 */
+  top: 0;
+  left: 0;
+  width: 100vw;              /* 覆盖全宽 */
+  height: 100vh;             /* 覆盖全高 */
+  background: rgba(0, 0, 0, 0.5); /* 半透明黑背景，防点下方功能 */
+  z-index: 11;              /* 确保在所有元素的最上方 */
+  
+  /* 弹性盒布局：让里面的面板完美居中 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  /* 初始时通过 CSS 把 display:none 改为用这里的 flex 控制显隐，JS里会处理 */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+/* 遮罩层显示时的状态 */
+.modal-overlay.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.environment-panel {
+  display: flex;
+  opacity: 1;
+  width: 300px;
+  height: 420px;
+  background: rgba(63, 63, 63, 0.3);
+  padding: 25px;
+  border-radius: 16px;       /* 稍微圆润一点的底框 */
+  box-shadow: 0 12px 40px rgba(0,0,0,0.5); /* 增强阴影，使其有浮起感 */
+  border: 1px solid #3e3e4f; /* 细腻的边框线 */
+  flex-direction: column;
+}
+
+/* 卡片头部布局 */
+.panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+  border-bottom: 1px solid #3e3e4f;
+  padding-bottom: 10px;
+}
+.panel-header h3 { font-size: 18px; color: #fff; }
+
+/* 右上角关闭按钮 */
+.close-env-btn {
+  background: none;
+  border: none;
+  color: #888;
+  font-size: 24px;
+  cursor: pointer;
+  line-height: 1;
+  transition: 0.2s;
+}
+.close-env-btn:hover { color: #fff; }
+
+/* 面板内每一行的布局 */
+.panel-row {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.panel-row-inline {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+label { font-size: 14px; color: #ffffff; font-weight: bold; }
+.value-display { float: right; color: #00cbc6; font-family: monospace; }
+
+/* 开关(Switch) */
+.switch { position: relative; display: inline-block; width: 50px; height: 26px; }
+.switch input { opacity: 0; width: 0; height: 0; }
+.slider-round {
+  position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #4e4e5a; transition: .3s; border-radius: 34px;
+}
+.slider-round:before {
+  position: absolute; content: ""; height: 18px; width: 18px; left: 4px; bottom: 4px;
+  background-color: white; transition: .3s; border-radius: 50%;
+}
+input:checked + .slider-round { background-color: #00cbc6; }
+input:checked + .slider-round:before { transform: translateX(24px); }
+
+/* 滑动条 */
+input[type="range"] {
+  width: 100%; height: 6px; background: #4e4e5a; border-radius: 3px; outline: none; -webkit-appearance: none; appearance: none; 
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none; width: 18px; height: 18px; border-radius: 50%; background: #00cbc6; cursor: pointer;
+}
+
+/* 禁用状态的遮罩 */
+.disabled-mask { opacity: 0.4; pointer-events: none; transition: 0.3s; }
+
+/* 天气文字 */
+.weather-labels { display: flex; justify-content: space-between; padding: 0 5px; font-size: 12px; color: #888; margin-top: -4px; }
+.weather-labels span.active { color: #00cbc6; font-weight: bold; }
+
+@media (max-width: 700px) {
+  body {
+    overflow: auto;
+  }
+
+  .environment-button {
+    left: calc(3vw + 150px);
+  }
+  .slogan-quote {
+    width: 90%;
+    margin-bottom: 10px;
+  }
+
+  .slogan-quote blockquote {
+    padding: 0 22px;
+  }
+
+  .slogan-quote blockquote::before,
+  .slogan-quote blockquote::after {
+    top: -8px;
+    font-size: 30px;
+  }
+  .slogan-quote blockquote::before {
+    left: 0;
+  }
+  .slogan-quote blockquote::after {
+    right: 0;
+  }
+  .slogan-en {
+    font-size: 12px;
+  }
+
+  .slogan-zh {
+    font-size: 12px;
+  }
+
+  .slogan-quote figcaption {
+    font-size: 10px;
+  }
+
+  .dialogue-box {
+    width: 95%;
+    opacity: 0 ;
+    pointer-events: none;
+  }
+
+  .toggle-chat-btn {
+    transform: rotate(45deg);
+  }
+
+  .coffee-cup {
+    transform: scale(0.9); 
+    bottom: 16vh;
+    right: 46vw;
+  }
+
+  .composer {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-options {
+    grid-template-columns: 1fr;
+  }
+
+  .writing-indicator {
+  
+  bottom: 150px;
+  
+  }
+  .send-button,
+  .clear-button {
+    min-height: 38px;
+    border-left: 0;
+    border-top: 1px solid var(--white);
+  }
+  .background,
+  .foreground,
+  .character, 
+  .time-layer,
+  .rain,
+  .raindrop {
+    position: fixed; 
+    right: -16vw;
+    top:-36vh;
+    height: 170vh; 
+    width: 170vw;
+    
+}
+}
+
+

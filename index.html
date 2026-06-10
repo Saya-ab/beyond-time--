@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>时间之外</title>
+    <link rel="stylesheet" href="styles.css?v=slogan-poem" />
+  </head>
+  <body>
+    <button class="music-button" id="musicButton" type="button" aria-pressed="false">音乐</button>
+    <button class="music-mode-button" id="musicModeButton" type="button">8bit</button>
+    <button class="settings-button" id="settingsButton" type="button">设置</button>
+
+    <button class="environment-button" id="environmentButton" type="button">环境</button>
+
+    <main class="room" aria-label="时间之外">
+
+      <svg style="position: absolute; width: 0; height: 0;">
+        <defs>
+          <!-- 定义一个名为 camera-lens 的自定义镜头滤镜 -->
+          <filter id="camera-lens">
+            <!-- 步骤A：进行高斯预模糊 -->
+            <feGaussianBlur stdDeviation="1.5" result="blur" />
+            <!-- 步骤B：通过矩阵强化亮部，将其转换为边缘清晰的光斑 -->
+           <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 1.2 -0.2" />
+          </filter>
+        </defs>
+      </svg>
+
+      <!-- <div class="sky-lines" aria-hidden="true">
+        <span class="moon"></span>
+        <span class="star star-a"></span>
+        <span class="star star-b"></span>
+        <span class="star star-c"></span>
+        <span class="star star-d"></span>
+        <span class="star star-e"></span>
+        <span class="star star-f"></span>
+        <span class="star star-g"></span>
+        <span class="star star-h"></span>
+      </div> 
+      
+      <img class="witch-image" src="reference-princess.jpg" alt="普瑞赛斯参考形象" /> -->
+      <div class="cover_up"></div>
+      <div class="cover_down"></div>
+    
+      <img class="background" src="background_behind.png" alt="房间" />
+      <img class="foreground" src="background_front.png" alt="前景" />
+      
+      <img class="character" id="charInnerImg" src="character_read.png" alt="角色形象" />
+      <button class="character-click-layer" id="mainCharacterBtn" type="button" aria-label="角色互动"></button>
+      <!-- 文字游戏对话窗口遮罩及容器 -->
+      <div id="gameDialogOverlay" class="game-overlay" style="display: none;">
+          <div id="gameDialogBox" class="game-dialog-box">
+              <!-- 名字标签（可选，可根据人设修改） -->
+              <div class="game-avatar-name">爱蕾塔</div>
+              <!-- 文字内容段落 -->
+              <p id="gameDialogText" class="game-text"></p>
+              <!-- 提示点击关闭的小光标 -->
+              <div class="game-arrow">▼ 点击任意处继续</div>
+          </div>
+      </div>
+      
+      <button class="toggle-chat-btn" id="toggleChatBtn" type="button" aria-label="切换对话框隐藏">✕</button>
+
+      <div class="time-layer layer-night" id="bgNight"></div>
+      <div class="time-layer layer-dusk" id="bgDusk"></div>
+      <div class="time-layer layer-noon" id="bgNoon"></div>
+      <div class="time-layer layer-dawn" id="bgDawn"></div>
+      <div class="time-layer layer-night-env" id="bgNightEnv"></div>
+      <div class="time-layer layer-dusk-env" id="bgDuskEnv"></div>
+      <div class="time-layer layer-noon-env" id="bgNoonEnv"></div>
+      <div class="time-layer layer-dawn-env" id="bgDawnEnv"></div>
+
+      <img class="raindrop" id="raindropImg" src="glass_raindrop.png" alt="雨滴" />
+      <img class="rain" id="rainImg" src="glass_rain.png" alt="雨窗" />
+
+      <figure class="slogan-quote" aria-label="项目引文">
+        <blockquote>
+          <p class="slogan-en">I offer you the bitterness of a man who has looked long and long at the lonely moon.</p>
+          <p class="slogan-zh">我给你一个久久地望着孤月的人的悲哀。</p>
+        </blockquote>
+        <figcaption>What Can I Hold You with?</figcaption>
+      </figure>
+
+      <div class="modal-overlay" id="modalOverlay">
+        <div class="environment-panel" id="envPanel">
+          <div class="panel-header">
+            <h3>环境调节</h3>
+            <button class="close-env-btn" id="closeEnvPanelBtn">&times;</button>
+          </div>
+
+          <div class="panel-row panel-row-inline">
+            <label for="manualSwitch">开启手动环境</label>
+            <label class="switch">
+              <input type="checkbox" id="manualSwitch">
+              <span class="slider-round"></span>
+          </label>
+          </div>
+
+          <div id="controlGroup" class="disabled-mask">
+        
+            <!-- 连续滑条：时间 -->
+            <div class="panel-row">
+              <label>环境时间 <span class="value-display" id="timeValue">06:00 (360m)</span></label>
+              <input type="range" id="timeSlider" min="0" max="1439" value="360">
+            </div>
+
+            <!-- 离散滑条：天气 -->
+            <div class="panel-row">
+              <label>天气状况 <span class="value-display" id="weatherValue">晴天 (Index: 0)</span></label>
+              <input type="range" id="weatherSlider" min="0" max="2" value="0" step="1">
+              <div class="weather-labels" id="weatherLabels">
+                <span class="active">晴天</span>
+                <span>阴天</span>
+                <span>雨天</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="coffee-cup" aria-hidden="true">
+        <span class="steam steam-a"></span>
+        <span class="steam steam-b"></span>
+        <span class="steam steam-c"></span>
+        <span class="cup-body"></span>
+        <span class="cup-handle"></span>
+        <span class="cup-saucer"></span>
+      </div>
+      
+      <section class="dialogue-box" id="dialogueBox" aria-label="对话框">
+        <div class="messages" id="messages">
+          <article class="message message-witch">
+            <p>进来吧。这里暂时只有黑暗、我、还有你可以慢慢放下的声音。</p>
+          </article>
+        </div>
+        <div class="writing-indicator" id="writingIndicator" aria-hidden="true">
+          <span class="tiny-book">
+            <span class="book-page book-page-left"></span>
+            <span class="book-page book-page-right"></span>
+          </span>
+          <span class="tiny-pen"></span>
+        </div>
+        <div class="quick-options" id="quickOptions" aria-label="心声选项"></div>
+        <form class="composer" id="chatForm">
+          <textarea
+            id="messageInput"
+            name="message"
+            rows="1"
+            placeholder="说点什么..."
+            autocomplete="off"
+          ></textarea>
+          <button class="send-button" id="sendButton" type="submit">发送</button>
+          <button class="clear-button" id="clearButton" type="button">清空</button>
+        </form>
+      </section>
+    </main>
+
+    <aside class="settings-drawer" id="settingsDrawer" aria-hidden="true">
+      <div class="settings-panel" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
+        <div class="settings-head">
+          <h2 id="settingsTitle">设置</h2>
+          <button class="close-button" id="closeSettingsButton" type="button" aria-label="关闭设置">关闭</button>
+        </div>
+
+        <form class="settings-form" id="settingsForm">
+          <label>
+            API Key
+            <input id="apiKeyInput" type="password" placeholder="sk-..." autocomplete="off" />
+          </label>
+
+          <label>
+            API 地址
+            <input id="apiUrlInput" type="url" />
+          </label>
+
+          <label>
+            模型
+            <input id="modelInput" type="text" />
+          </label>
+
+          <label>
+            人设 Prompt
+            <button class="secret-prompt-box" id="secretPromptButton" type="button">
+              不准偷窥魔女的秘密
+            </button>
+            <textarea id="personaInput" rows="10" hidden></textarea>
+          </label>
+
+          <div class="settings-actions">
+            <button class="plain-button" id="resetSettingsButton" type="button">重置</button>
+            <button class="plain-button" type="submit">保存</button>
+          </div>
+        </form>
+      </div>
+    </aside>
+
+    <script src="app.js?v=slogan-poem"></script>
+
+  </body>
+</html>
