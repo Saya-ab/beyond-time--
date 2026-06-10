@@ -1814,7 +1814,7 @@ function createSixteenBitMusic() {
 function openSettings() {
   elements.settingsDrawer.classList.add("is-open");
   elements.settingsDrawer.setAttribute("aria-hidden", "false");
-  elements.apiKeyInput.focus();
+  //elements.apiKeyInput.focus();
 }
 
 function closeSettings() {
