@@ -1208,38 +1208,41 @@ function createTypewriter(target) {
 function getChatRequestConfig(agentState) {
   const messages = buildMessages(agentState);
   const body = {
-    model: settings.model,
-    messages,
-    temperature: 1.35,
-    max_tokens: MAX_OUTPUT_TOKENS,
-    stream: true,
-    stream_options: { include_usage: false },
-    thinking: { type: "enabled" },
+      model: settings.model,
+      messages,
+      temperature: 1.35,
+      max_tokens: MAX_OUTPUT_TOKENS,
+      stream: true,
+      stream_options: { include_usage: false },
+      thinking: { type: "enabled" },
   };
 
-  if (window.location.protocol === "file:") {
-    return {
-      url: settings.apiUrl,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${settings.apiKey}`,
-      },
-      body,
-    };
+  // 💡 修改这里：只要设置里有 apiUrl，就直接走前端直连 AI 的配置
+  if (settings.apiUrl) {
+      return {
+          url: settings.apiUrl,
+          headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${settings.apiKey}`,
+          },
+          body,
+      };
   }
 
+  // 如果没有配置 apiUrl，才走默认的相对路径（通常用于你打包了后端在一起的项目）
   return {
-    url: "/api/chat",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: {
-      ...body,
-      apiKey: settings.apiKey,
-      apiUrl: settings.apiUrl,
-    },
+      url: "/api/chat",
+      headers: {
+          "Content-Type": "application/json",
+      },
+      body: {
+          ...body,
+          apiKey: settings.apiKey,
+          apiUrl: settings.apiUrl,
+      },
   };
 }
+
 
 function buildMessages(agentState) {
   const systemPrompt = settings.persona.trim() || DEFAULT_PERSONA;
